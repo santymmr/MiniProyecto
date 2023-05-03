@@ -2,6 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
+
+//github token: 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
+
+
 package miniproyecto;
 
 import java.util.Scanner;
@@ -22,8 +26,9 @@ public class MiniProyecto {
        Juego juego = new Juego();
        Scanner sc = new Scanner(System.in);
        
+            juego.bucleJugable();
+        
        
-       juego.bucleJugable();
       
        
        
