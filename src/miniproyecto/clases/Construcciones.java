@@ -13,7 +13,9 @@ public class Construcciones {
     String nombre;
     int dineroGenerado;
     int costo;
-
+    Balance balance;
+    
+    
     public Construcciones(String nombre, int dineroGenerado, int costo) {
         this.nombre = nombre;
         this.dineroGenerado = dineroGenerado;
@@ -44,7 +46,8 @@ public class Construcciones {
               
         if (tuDinero < costo) {
             System.out.println("No tienes fondos para comprar eso.");
-            dineroGenerado = 0;          
+            dineroGenerado = 0;
+            
         }else{
             System.out.println("Se va a construir. . .");
         dineroGenerado = 11000;    
@@ -116,10 +119,6 @@ public class Construcciones {
         }
         return dineroGenerado;
     }
-    
-    
-    
-    
-   
+          
     
 }

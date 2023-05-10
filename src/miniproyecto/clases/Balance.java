@@ -13,9 +13,9 @@ public class Balance {
     int dineroActual;
     int dineroGenerado;
 
-    public Balance(int dineroActual, int dineroGenerado) {
-        this.dineroActual = dineroActual;
-        this.dineroGenerado = dineroGenerado;
+    public Balance() {
+        this.dineroActual = 0;
+        this.dineroGenerado = 0;
     }
 
     public int getDineroActual() {

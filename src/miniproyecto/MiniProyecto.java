@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 
-//github token: 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
+//github token: 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
 
 
 package miniproyecto;

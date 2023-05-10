@@ -51,7 +51,7 @@ public class GestionDias {
     public void cambioDiaAMes31(){
         if ((mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) && dia == 31){
                 
-            dia = 1;
+            dia = 0;
             if (getMes() <= 12) {
                 mes = getMes() + 1;
             }else{
@@ -64,7 +64,7 @@ public class GestionDias {
     public void cambioDiaAMes30(){
         if ((mes == 4 || mes == 6 || mes == 9 || mes == 11) && dia == 30){
                 
-            dia = 1;
+            dia = 0;
             if (getMes() <= 12) {
                 mes = getMes() + 1;
             }else{
@@ -76,7 +76,7 @@ public class GestionDias {
       public void cambioDiaAMes29(){
         if ((mes == 2) && dia == 29){
                 
-            dia = 1;
+            dia = 0;
             if (getMes() <= 12) {
                 mes = getMes() + 1;
             }else{
@@ -85,7 +85,22 @@ public class GestionDias {
             
             
         }
-    }    
+        
+       
+    }
+      
+       public void cambioAnyo(){
+            if ((mes == 12) && dia == 31){
+                dia = 0;
+                mes = 0;
+            }
+        }
+      
+      public void cambioDia(){
+          dia++;
+      }
     
+      
+      
     
 }

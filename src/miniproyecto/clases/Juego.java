@@ -15,9 +15,15 @@ public class Juego {
     
     Balance balance;
     Construcciones construcciones;
+    GestionDias fecha = new GestionDias(1,1,2023);
+    int cuentaBanco = 0, cuentaPuerto = 0, cuentaColegio = 0, cuentaUniversidad = 0, cuentaEstacionDeTren = 0, cuentaAeropuerto = 0, cuentaHospital = 0;
+    
     
     public Juego() {
-        balance = new Balance(10000,2000);          
+       
+        balance = new Balance();  
+        balance.setDineroGenerado(0);
+        balance.setDineroActual(6000);
     }
       
  
@@ -31,29 +37,42 @@ public class Juego {
         
         
        int dineroActual = 10000;
-       int deuda = 200000;
+       int deuda = 2000000;
        int input;
   
-        for (int i = 0; deuda != 0; i++) {
+       
+       
+       
+       
+        for (int i = 1; deuda > 0; i++) {
             
         
    
        
-    String barraHorizontal = "*********************************************************";
-    String barraVertical = "***                                                   ***";
+    String barraHorizontal = "****************************************************************";
+    String barraVertical = "***                                                          ***";
 
 System.out.println(barraHorizontal);
 System.out.println(barraVertical);
-System.out.printf("***                  %-30s***\n", gd.toString().trim());
+System.out.println("***                   " + fecha.toString() + "                               ***");
 System.out.println(barraVertical);
-System.out.println("***                 Dinero Actual:"+dineroActual+"         ***");
-System.out.println("***                 Deuda:"+deuda+"         ***");
-System.out.println(barraVertical);
-System.out.println(barraVertical);
-System.out.println("***                 1. Construir                         ***");
-System.out.println("***                 2. Pagar Deuda                       ***");
+System.out.println("***                 Dinero Actual:"+balance.getDineroActual()+"                       ***");
+System.out.println("***                 Deuda:"+deuda+"                             ***");
 System.out.println(barraVertical);
 System.out.println(barraVertical);
+System.out.println("***                 1. Construir                             ***");
+System.out.println("***                 2. Pagar Deuda                           ***");
+System.out.println("***                 3. Pasar día                             ***");
+System.out.println(barraVertical);
+System.out.println(barraVertical);
+System.out.println(barraHorizontal);
+System.out.println("***                 Bancos: "+cuentaBanco+"                                ***");
+System.out.println("***                 Puertos: "+cuentaPuerto+"                               ***");
+System.out.println("***                 Colegios: "+cuentaColegio+"                              ***");
+System.out.println("***                 Universidades: "+cuentaUniversidad+"                         ***");
+System.out.println("***                 Estaciones de Tren: "+cuentaEstacionDeTren+"                    ***");
+System.out.println("***                 Aeropuertos: "+cuentaAeropuerto+"                           ***");
+System.out.println("***                 Hospitales: "+cuentaHospital+"                            ***");
 System.out.println(barraHorizontal);
 
        
@@ -72,26 +91,55 @@ System.out.println(barraHorizontal);
                 
                 input = sc.nextInt();
                 switch (input) {
-                    case 1:                     
-                        construcciones.banco(dineroActual); 
+                    case 1:
+                        Construcciones banco = new Construcciones("Banco",8000,3000);
+                        banco.banco(balance.getDineroActual());
+                        balance.setDineroActual(balance.getDineroActual() - 3000);
+                        balance.setDineroGenerado(balance.getDineroGenerado() + 8000);
+                        cuentaBanco++;
                         break;
-                    case 2:    
-                        construcciones.puerto(dineroActual);
+                    case 2:
+                        Construcciones puerto = new Construcciones("Puerto",11000,6000);
+                        puerto.puerto(balance.getDineroActual());
+                        balance.setDineroActual(balance.getDineroActual() - 6000);
+                        balance.setDineroGenerado(balance.getDineroGenerado() + 11000);
+                        cuentaPuerto++;
                         break;
                     case 3:
-                        construcciones.colegio(dineroActual);
+                        Construcciones colegio = new Construcciones("Colegio",14000,9000);
+                        colegio.colegio(balance.getDineroActual());
+                        balance.setDineroActual(balance.getDineroActual() - 9000);
+                        balance.setDineroGenerado(balance.getDineroGenerado()+14000);
+                        cuentaColegio++;
                         break;
                     case 4:
-                        construcciones.universidad(dineroActual);
+                        Construcciones universidad = new Construcciones("Universidad",17000,12000);
+                        universidad.universidad(balance.getDineroActual());
+                        balance.setDineroActual(balance.getDineroActual() - 12000);
+                        balance.setDineroGenerado(balance.getDineroGenerado()+17000);
+                        cuentaUniversidad++;
                         break;
                     case 5:
-                        construcciones.estacionDeTren(dineroActual);
+                        Construcciones estacionDeTren = new Construcciones("Estación de Tren",19000,24000);
+                        estacionDeTren.estacionDeTren(balance.getDineroActual());
+                        balance.setDineroActual(balance.getDineroActual() - 24000);
+                        balance.setDineroGenerado(balance.getDineroGenerado()+19000);
+                        cuentaEstacionDeTren++;
                         break;
                     case 6:
-                        construcciones.aeropuerto(dineroActual);
+                        Construcciones aeropuerto = new Construcciones("Aeropuerto",23000,39000);
+                        aeropuerto.aeropuerto(balance.getDineroActual());
+                        balance.setDineroActual(balance.getDineroActual() - 39000);
+                        balance.setDineroGenerado(balance.getDineroGenerado()+23000);
+                        cuentaAeropuerto++;
                         break;
                     case 7:
-                        construcciones.hospital(dineroActual);
+                        Construcciones hospital = new Construcciones("Hospital",29000,55000);
+                        hospital.hospital(balance.getDineroActual());
+                        balance.setDineroActual(balance.getDineroActual() - 55000);
+                        balance.setDineroGenerado(balance.getDineroGenerado()+29000);
+                        cuentaHospital++;
+                        break;
                     default:
                         throw new AssertionError();
                 }
@@ -101,19 +149,49 @@ System.out.println(barraHorizontal);
                 System.out.println("Tu deuda es de: " + deuda + "€");
                 System.out.println("¿Cuánto quieres pagar?");
                 input = sc.nextInt();
-                if (input > dineroActual) {
+                if (input > balance.getDineroActual()) {
                     System.out.println("No tienes tanto rey");
                 }else{
                 deuda = deuda - input;
-                dineroActual = dineroActual - input;
+                balance.setDineroActual( balance.getDineroActual()- input);
                 System.out.println("Ahora queda: " + deuda + "€ de deuda");
                 }
                 break;
+                
+                
+            case 3:
+                System.out.println("Pasando día...");
+                break;
             default:
-                throw new AssertionError();
+                System.out.println("Numero incorrecto");
+                
+                break;
+                        
         }
         
+        
+        
+        fecha.cambioDiaAMes29();
+        fecha.cambioDiaAMes30();
+        fecha.cambioDiaAMes31();
+        fecha.cambioAnyo();
+        fecha.cambioDia();
+        
+        if (i % 7 == 0  ) {
+               System.out.println("Has generado "+ balance.getDineroGenerado() + " esta semana");
+               balance.setDineroActual(balance.getDineroActual() + balance.getDineroGenerado());
+           }
+            
+             
+        
         }//for
+        
+        System.out.println("OLEE HAS GANAO!");
+        
     }
     
+   
+          
+           
+   
 }

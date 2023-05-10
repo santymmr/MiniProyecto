@@ -20,7 +20,7 @@ public class EventosAleatorios extends Balance {
     Balance b;
 
     public EventosAleatorios(int dineroActual, int dineroGenerado) {
-        super(dineroActual, dineroGenerado);
+        super();
     }
     
     void imprimirMenu(){
