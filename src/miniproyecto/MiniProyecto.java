@@ -29,6 +29,7 @@ public class MiniProyecto {
             juego.bucleJugable();
         
        
+               
       
        
        

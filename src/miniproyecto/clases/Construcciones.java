@@ -28,96 +28,94 @@ public class Construcciones {
     }
     
       
-    public int banco(int tuDinero){
+    public boolean banco(int tuDinero){
         costo = 3000;
               
         if (tuDinero < costo) {
             System.out.println("No tienes fondos para comprar eso.");
-            dineroGenerado = 0;          
+            return false;          
         }else{
             System.out.println("Se va a construir. . .");
-        dineroGenerado = 8000;    
+           
         }
-        return dineroGenerado;
+        return true;
     }
     
-     public int puerto(int tuDinero){
+     public boolean puerto(int tuDinero){
         costo = 6000;
               
         if (tuDinero < costo) {
             System.out.println("No tienes fondos para comprar eso.");
-            dineroGenerado = 0;
+            return false;
             
         }else{
             System.out.println("Se va a construir. . .");
-        dineroGenerado = 11000;    
+            
         }
-        return dineroGenerado;
+        return true;
     }
      
-      public int colegio(int tuDinero){
+      public boolean colegio(int tuDinero){
         costo = 9000;
               
         if (tuDinero < costo) {
             System.out.println("No tienes fondos para comprar eso.");
-            dineroGenerado = 0;          
+            return false;         
         }else{
             System.out.println("Se va a construir. . .");
-        dineroGenerado = 14000;    
+           
         }
-        return dineroGenerado;
+        return true;
     }
       
-       public int universidad(int tuDinero){
+       public boolean universidad(int tuDinero){
         costo = 12000;
               
         if (tuDinero < costo) {
             System.out.println("No tienes fondos para comprar eso.");
-            dineroGenerado = 0;          
+            return false;          
         }else{
             System.out.println("Se va a construir. . .");
-        dineroGenerado = 17000;    
+            
         }
-        return dineroGenerado;
+        return true;
     }
        
-        public int estacionDeTren(int tuDinero){
+        public boolean estacionDeTren(int tuDinero){
         costo = 24000;
               
         if (tuDinero < costo) {
             System.out.println("No tienes fondos para comprar eso.");
-            dineroGenerado = 0;          
+            return false;          
         }else{
             System.out.println("Se va a construir. . .");
-        dineroGenerado = 19000;    
+          
         }
-        return dineroGenerado;
+        return true;
     }
         
-         public int aeropuerto(int tuDinero){
+         public boolean aeropuerto(int tuDinero){
         costo = 39000;
               
         if (tuDinero < costo) {
             System.out.println("No tienes fondos para comprar eso.");
-            dineroGenerado = 0;          
+            return false;         
         }else{
             System.out.println("Se va a construir. . .");
-        dineroGenerado = 23000;    
+           
         }
-        return dineroGenerado;
+        return true;
     }
          
-          public int hospital(int tuDinero){
-        costo = 55000;
-              
+          public boolean hospital(int tuDinero){
+        costo = 55000;             
         if (tuDinero < costo) {
             System.out.println("No tienes fondos para comprar eso.");
-            dineroGenerado = 0;          
+            return false;         
         }else{
-            System.out.println("Se va a construir. . .");
-        dineroGenerado = 29000;    
+            System.out.println("Se va a construir. . .");        
         }
-        return dineroGenerado;
+        return true;
     }
           
     

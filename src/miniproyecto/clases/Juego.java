@@ -17,7 +17,7 @@ public class Juego {
     Construcciones construcciones;
     GestionDias fecha = new GestionDias(1,1,2023);
     int cuentaBanco = 0, cuentaPuerto = 0, cuentaColegio = 0, cuentaUniversidad = 0, cuentaEstacionDeTren = 0, cuentaAeropuerto = 0, cuentaHospital = 0;
-    
+    EventosAleatorios eventos = new EventosAleatorios(balance.dineroActual,balance.dineroGenerado);
     
     public Juego() {
        
@@ -32,6 +32,7 @@ public class Juego {
          Scanner sc = new Scanner(System.in);
         
         //CONSTRUCTORES
+        
         
         GestionDias gd = new GestionDias(1,1,2000);
         
@@ -93,52 +94,72 @@ System.out.println(barraHorizontal);
                 switch (input) {
                     case 1:
                         Construcciones banco = new Construcciones("Banco",8000,3000);
-                        banco.banco(balance.getDineroActual());
+                        if (banco.banco(balance.getDineroActual()) == false) {
+                            
+                        }else{
                         balance.setDineroActual(balance.getDineroActual() - 3000);
                         balance.setDineroGenerado(balance.getDineroGenerado() + 8000);
                         cuentaBanco++;
+                        }
                         break;
                     case 2:
                         Construcciones puerto = new Construcciones("Puerto",11000,6000);
-                        puerto.puerto(balance.getDineroActual());
+                        if(puerto.puerto(balance.getDineroActual()) == false) {
+                        
+                        }else{
                         balance.setDineroActual(balance.getDineroActual() - 6000);
                         balance.setDineroGenerado(balance.getDineroGenerado() + 11000);
                         cuentaPuerto++;
+                        }
                         break;
                     case 3:
                         Construcciones colegio = new Construcciones("Colegio",14000,9000);
-                        colegio.colegio(balance.getDineroActual());
+                        if(colegio.colegio(balance.getDineroActual()) == false) {
+                        
+                        }else{
                         balance.setDineroActual(balance.getDineroActual() - 9000);
                         balance.setDineroGenerado(balance.getDineroGenerado()+14000);
                         cuentaColegio++;
+                        }
                         break;
                     case 4:
                         Construcciones universidad = new Construcciones("Universidad",17000,12000);
-                        universidad.universidad(balance.getDineroActual());
+                        if(universidad.universidad(balance.getDineroActual()) == false) {
+                            
+                        }else{
                         balance.setDineroActual(balance.getDineroActual() - 12000);
                         balance.setDineroGenerado(balance.getDineroGenerado()+17000);
                         cuentaUniversidad++;
+                        }
                         break;
                     case 5:
                         Construcciones estacionDeTren = new Construcciones("Estación de Tren",19000,24000);
-                        estacionDeTren.estacionDeTren(balance.getDineroActual());
+                        if(estacionDeTren.estacionDeTren(balance.getDineroActual()) == false) {
+                            
+                        }else{
                         balance.setDineroActual(balance.getDineroActual() - 24000);
                         balance.setDineroGenerado(balance.getDineroGenerado()+19000);
                         cuentaEstacionDeTren++;
+                        }
                         break;
                     case 6:
                         Construcciones aeropuerto = new Construcciones("Aeropuerto",23000,39000);
-                        aeropuerto.aeropuerto(balance.getDineroActual());
+                        if(aeropuerto.aeropuerto(balance.getDineroActual()) == false) {
+                            
+                        }else{
                         balance.setDineroActual(balance.getDineroActual() - 39000);
                         balance.setDineroGenerado(balance.getDineroGenerado()+23000);
                         cuentaAeropuerto++;
+                        }
                         break;
                     case 7:
-                        Construcciones hospital = new Construcciones("Hospital",29000,55000);
-                        hospital.hospital(balance.getDineroActual());
+                        Construcciones hospital = new Construcciones("Hospital",29000,55000);                  
+                        if (hospital.hospital(balance.getDineroActual()) == false) {          
+                        }else{ 
                         balance.setDineroActual(balance.getDineroActual() - 55000);
                         balance.setDineroGenerado(balance.getDineroGenerado()+29000);
                         cuentaHospital++;
+                        }
                         break;
                     default:
                         throw new AssertionError();
@@ -176,6 +197,8 @@ System.out.println(barraHorizontal);
         fecha.cambioDiaAMes31();
         fecha.cambioAnyo();
         fecha.cambioDia();
+        eventos.ev_Quejas();
+        
         
         if (i % 7 == 0  ) {
                System.out.println("Has generado "+ balance.getDineroGenerado() + " esta semana");
