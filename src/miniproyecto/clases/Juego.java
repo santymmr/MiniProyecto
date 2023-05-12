@@ -17,13 +17,14 @@ public class Juego {
     Construcciones construcciones;
     GestionDias fecha = new GestionDias(1,1,2023);
     int cuentaBanco = 0, cuentaPuerto = 0, cuentaColegio = 0, cuentaUniversidad = 0, cuentaEstacionDeTren = 0, cuentaAeropuerto = 0, cuentaHospital = 0;
-    EventosAleatorios eventos = new EventosAleatorios(balance.dineroActual,balance.dineroGenerado);
+    EventosAleatorios eventos;
     
     public Juego() {
        
         balance = new Balance();  
         balance.setDineroGenerado(0);
         balance.setDineroActual(6000);
+        eventos = new EventosAleatorios(balance.dineroActual,balance.dineroGenerado);
     }
       
  
@@ -197,7 +198,7 @@ System.out.println(barraHorizontal);
         fecha.cambioDiaAMes31();
         fecha.cambioAnyo();
         fecha.cambioDia();
-        eventos.ev_Quejas();
+        //eventos.ev_Quejas();
         
         
         if (i % 7 == 0  ) {

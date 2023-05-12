@@ -91,8 +91,9 @@ public class GestionDias {
       
        public void cambioAnyo(){
             if ((mes == 12) && dia == 31){
-                dia = 0;
-                mes = 0;
+                anyo = getAnyo() + 1;
+                dia = getDia() + 1;
+                setMes(1);
             }
         }
       

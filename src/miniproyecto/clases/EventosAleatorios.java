@@ -33,7 +33,7 @@ public class EventosAleatorios extends Balance {
      
     void ev_Quejas(){
         int aleatorio = NumeroAleatorio.nextInt();
-        if (aleatorio < 10) {
+        if (aleatorio < 3) {
             imprimirMenu();
         }
       
