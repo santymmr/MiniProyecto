@@ -24,7 +24,7 @@ public class Juego {
         balance = new Balance();  
         balance.setDineroGenerado(0);
         balance.setDineroActual(6000);
-        eventos = new EventosAleatorios(balance.dineroActual,balance.dineroGenerado);
+        eventos = new EventosAleatorios(balance.dineroActual,balance.dineroGenerado,balance);
     }
       
  
@@ -198,7 +198,10 @@ System.out.println(barraHorizontal);
         fecha.cambioDiaAMes31();
         fecha.cambioAnyo();
         fecha.cambioDia();
-        //eventos.ev_Quejas();
+            if (deuda > 0) {
+                eventos.ev_Quejas();
+            }
+        
         
         
         if (i % 7 == 0  ) {
