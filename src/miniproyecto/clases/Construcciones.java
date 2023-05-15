@@ -118,5 +118,28 @@ public class Construcciones {
         return true;
     }
           
+          public boolean bolsa(int tuDinero){
+        costo = 125000;             
+        if (tuDinero < costo) {
+            System.out.println("No tienes fondos para comprar eso.");
+            return false;         
+        }else{
+            System.out.println("Se va a construir. . .");        
+        }
+        return true;
+    }
+          
+          
+           public boolean minas(int tuDinero){
+        costo = 285000;             
+        if (tuDinero < costo) {
+            System.out.println("No tienes fondos para comprar eso.");
+            return false;         
+        }else{
+            System.out.println("Se va a construir. . .");        
+        }
+        return true;
+    }
+          
     
 }
