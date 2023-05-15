@@ -227,9 +227,11 @@ System.out.println(barraHorizontal);
         fecha.cambioDia();
             if (deuda > 0) {
                 eventos.ev_Quejas();
+                eventos.ev_Incendios();
+                eventos.ev_inversorChino();
+                eventos.deuda();
             }
-        eventos.ev_Incendios();
-        
+      
         
         
         if (i % 7 == 0  ) {
