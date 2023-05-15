@@ -16,7 +16,7 @@ public class Juego {
     Balance balance;
     Construcciones construcciones;
     GestionDias fecha = new GestionDias(1,1,2023);
-    int cuentaBanco = 0, cuentaPuerto = 0, cuentaColegio = 0, cuentaUniversidad = 0, cuentaEstacionDeTren = 0, cuentaAeropuerto = 0, cuentaHospital = 0;
+    int cuentaBanco = 0, cuentaPuerto = 0, cuentaColegio = 0, cuentaUniversidad = 0, cuentaEstacionDeTren = 0, cuentaAeropuerto = 0, cuentaHospital = 0, cuentaBolsa = 0, cuentaMinas = 0;
     EventosAleatorios eventos;
     
     public Juego() {
@@ -59,7 +59,7 @@ System.out.println(barraVertical);
 System.out.println("***                   " + fecha.toString() + "                               ***");
 System.out.println(barraVertical);
 System.out.println("***                 Dinero Actual:"+balance.getDineroActual()+"                       ***");
-System.out.println("***                 Deuda:"+deuda+"                             ***");
+System.out.println("***                 Deuda:"+deuda+"                            ***");
 System.out.println(barraVertical);
 System.out.println(barraVertical);
 System.out.println("***                 1. Construir                             ***");
@@ -75,6 +75,8 @@ System.out.println("***                 Universidades: "+cuentaUniversidad+"    
 System.out.println("***                 Estaciones de Tren: "+cuentaEstacionDeTren+"                    ***");
 System.out.println("***                 Aeropuertos: "+cuentaAeropuerto+"                           ***");
 System.out.println("***                 Hospitales: "+cuentaHospital+"                            ***");
+System.out.println("***                 Bolsa: "+cuentaBolsa+"                                 ***");
+System.out.println("***                 Minas: "+cuentaMinas+"                                 ***");
 System.out.println(barraHorizontal);
 
        
@@ -83,13 +85,15 @@ System.out.println(barraHorizontal);
         switch (input) {
             case 1:
                 System.out.println("Construcción");
-                System.out.println(" 1. Banco            | Coste: 3000€  | Genera: 8000€ / Semana");
-                System.out.println(" 2. Puerto           | Coste: 6000€  | Genera: 11000€ / Semana");
-                System.out.println(" 3. Colegio          | Coste: 9000€  | Genera: 14000€ / Semana");
-                System.out.println(" 4. Universidad      | Coste: 12000€ | Genera: 17000€ / Semana");
-                System.out.println(" 5. Estación de Tren | Coste: 24000€ | Genera: 19000€ / Semana");
-                System.out.println(" 6. Aeropuerto       | Coste: 39000€ | Genera: 23000€ / Semana");
-                System.out.println(" 7. Hospital         | Coste: 55000€ | Genera: 29000€ / Semana");
+                System.out.println(" 1. Banco            | Coste: 3000€   | Genera: 8000€ / Semana");
+                System.out.println(" 2. Puerto           | Coste: 6000€   | Genera: 11000€ / Semana");
+                System.out.println(" 3. Colegio          | Coste: 9000€   | Genera: 14000€ / Semana");
+                System.out.println(" 4. Universidad      | Coste: 12000€  | Genera: 17000€ / Semana");
+                System.out.println(" 5. Estación de Tren | Coste: 24000€  | Genera: 19000€ / Semana");
+                System.out.println(" 6. Aeropuerto       | Coste: 39000€  | Genera: 23000€ / Semana");
+                System.out.println(" 7. Hospital         | Coste: 55000€  | Genera: 29000€ / Semana");
+                System.out.println(" 8. Bolsa            | Coste: 125000€ | Genera: 44000€ / Semana");
+                System.out.println(" 9. Minas            | Coste: 285000€ | Genera: 60000€ / Semana");
                 
                 input = sc.nextInt();
                 switch (input) {
@@ -162,6 +166,25 @@ System.out.println(barraHorizontal);
                         cuentaHospital++;
                         }
                         break;
+                      case 8:
+                        Construcciones bolsa = new Construcciones("Bolsa",44000,125000);                  
+                        if (bolsa.hospital(balance.getDineroActual()) == false) {          
+                        }else{ 
+                        balance.setDineroActual(balance.getDineroActual() - 125000);
+                        balance.setDineroGenerado(balance.getDineroGenerado()+44000);
+                        cuentaBolsa++;
+                        }
+                        break;
+                        
+                        case 9:
+                        Construcciones minas = new Construcciones("Minas",60000,285000);                  
+                        if (minas.hospital(balance.getDineroActual()) == false) {          
+                        }else{ 
+                        balance.setDineroActual(balance.getDineroActual() - 285000);
+                        balance.setDineroGenerado(balance.getDineroGenerado()+60000);
+                        cuentaMinas++;
+                        }
+                        break;  
                     default:
                         throw new AssertionError();
                 }
@@ -176,7 +199,11 @@ System.out.println(barraHorizontal);
                 }else{
                 deuda = deuda - input;
                 balance.setDineroActual( balance.getDineroActual()- input);
+                    if (deuda < 0) {
+                        System.out.println("Ahora queda: 0 € de deuda");
+                    }else{
                 System.out.println("Ahora queda: " + deuda + "€ de deuda");
+                    }
                 }
                 break;
                 
@@ -201,6 +228,7 @@ System.out.println(barraHorizontal);
             if (deuda > 0) {
                 eventos.ev_Quejas();
             }
+        eventos.ev_Incendios();
         
         
         
