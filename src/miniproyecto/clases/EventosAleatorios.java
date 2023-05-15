@@ -232,7 +232,7 @@ public class EventosAleatorios extends Balance {
                     
                 }               
                 break;          
-            }case 2: {
+            case 2: {
                 if (aleatorio <= 5) {                          
                     System.out.println("");
                     b.setDineroActual(b.getDineroActual() + 50000);
@@ -240,13 +240,13 @@ public class EventosAleatorios extends Balance {
                     b.setDineroActual(b.getDineroActual() - 1000000);              
                 }                          
                 break;
-               
-            }default:
+        
+        }default:
                 throw new AssertionError();
         }
         
         
         
+     }
     }
-    
 }
