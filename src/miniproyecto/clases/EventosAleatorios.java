@@ -20,7 +20,8 @@ public class EventosAleatorios extends Balance {
     Balance b;
     int naleatorio = 22;
     int naleatorio2 = 15;
-    boolean bucle = false;
+    int naleatorio3 = 12;
+    
 
     public EventosAleatorios(int dineroActual, int dineroGenerado, Balance b)
     {
@@ -57,6 +58,14 @@ public class EventosAleatorios extends Balance {
         System.out.println(" 1. Pagar  : Pierde un 30% de tu dinero, y reduce la probabilidad de este evento" );
         System.out.println(" 2. Correr : 70% de Perder el 80% de tu dinero, o bien 30% de que no pase nada, Cada vez que huyas, habrá mas probabilidades de este evento.");
     }
+    
+     void imprimirMenu5(){
+         int interes = 30;
+        System.out.println("Y esta carta del banco... hay que pagar intereses");
+        System.out.println("¿Qué debería hacer?...");
+        System.out.println(" 1. Haré como que no lo he visto  : Sube tu deuda 70.000€ y el interes a pagar un 10%" );
+        System.out.println(   "2. Pagar : Actualmente debería de pagar un " + interes +"% de tu dinero actual");
+    }
      
     void ev_Quejas(){
         int aleatorio = NumeroAleatorio.nextInt(100-1);
@@ -67,7 +76,7 @@ public class EventosAleatorios extends Balance {
       
         eleccion = sc.nextInt();
         
-            while (!bucle) {                
+                         
    
         switch (eleccion) {
             case 1:{
@@ -81,7 +90,7 @@ public class EventosAleatorios extends Balance {
                     b.setDineroActual(b.getDineroActual() - 50000);
                     System.out.println("Ahora tienes: " + b.getDineroActual() + " €");
                 } 
-                bucle = true;
+               
                 break;          
             }case 2: {
                 aleatorio = NumeroAleatorio.nextInt(100-1); 
@@ -97,7 +106,7 @@ public class EventosAleatorios extends Balance {
                     
                     }
                 }  
-                bucle = true;
+                
                 break;
             
             }case 3:{
@@ -107,18 +116,18 @@ public class EventosAleatorios extends Balance {
                     b.setDineroActual(b.getDineroActual() + 10000);
                     System.out.println("A lo seguro perro, toma los 10.000€");
                     System.out.println("Ahora tienes: " + getDineroActual() + " €");
-                    bucle = true;
+                    
                 }else{
                     System.out.println("Nada");
-                    bucle = true;
+                    
                 }
                 
                 break;
                 
             }default:
                 System.out.println("Ese numero no fufa");
-                bucle = false;
-        }
+                
+        
         }
         
         
@@ -137,7 +146,7 @@ public class EventosAleatorios extends Balance {
         if (aleatorio <= naleatorio) {
             imprimirMenu2();
         
-            while (!bucle) {                
+                         
                 
             
         eleccion = sc.nextInt();
@@ -154,7 +163,7 @@ public class EventosAleatorios extends Balance {
                 }else{
                     System.out.println("esto no deberia de irj skjs");
                 }      
-                bucle = true;
+               
                 break;
                 
             }case 2: {
@@ -162,12 +171,12 @@ public class EventosAleatorios extends Balance {
                     System.out.println("Ahora debería de haber menos incendios");
                     b.setDineroActual(b.getDineroActual() - 40000);
                     naleatorio = naleatorio -9;
-                 bucle = true;       
+                        
                 break;
                        
             }default:
-                bucle = false;
-        }
+                
+        
         
         }
         
@@ -203,9 +212,11 @@ public class EventosAleatorios extends Balance {
                 }               
                 break;          
             }case 2: {
-                if (aleatorio <= 5) {                          
-                    System.out.println("Ennove 50.000 pa ti");
-                    b.setDineroActual(b.getDineroActual() + 50000);
+                if (aleatorio <= 5) {     
+                    
+                    System.out.println("Numero aleatorio: " + aleatorio);
+                    System.out.println("Ennove 1.500.000 pa ti");
+                    b.setDineroActual(b.getDineroActual() + 1500000);
                 }else{
                     System.out.println("CAGASTE -1.000.000€");
                     b.setDineroActual(b.getDineroActual() - 1000000);              
@@ -220,7 +231,7 @@ public class EventosAleatorios extends Balance {
         
     }
     
-    
+
     
     } // EVENTO INVERSOR CHINO
     
@@ -229,11 +240,11 @@ public class EventosAleatorios extends Balance {
         int ranBajo = 1;
         int aleatorio = NumeroAleatorio.nextInt(100-1);
         //System.out.println("num_aleatorio_generado:" + aleatorio);
-        if (aleatorio <= naleatorio2) {
-            imprimirMenu4();
+        //System.out.println("naleatorio2: " + naleatorio2);
         
-            while (!bucle) {                
-                
+        if (aleatorio < naleatorio2) {
+            imprimirMenu4();
+       
             
         eleccion = sc.nextInt();
         
@@ -241,33 +252,91 @@ public class EventosAleatorios extends Balance {
            
             case 1:{
                 
-                aleatorio = NumeroAleatorio.nextInt(100-1);               
-                    int aux = (int) (b.getDineroActual() - (b.getDineroActual()*0.3));
-                    b.setDineroActual(b.getDineroActual() - aux);
-                    System.out.println("Diablo perdiste: "+ aux);
-                    
+                aleatorio = NumeroAleatorio.nextInt(100-1);
+                if (b.getDineroActual() > 0) {
+                     int aux = (int) (b.getDineroActual() - (b.getDineroActual()*0.3));
+                    b.setDineroActual(aux);
+                    //System.out.println("Diablo perdiste: " + aux);
+                    naleatorio2 = naleatorio2 - 5;
+                    System.out.println("Ahora esta gente no debería salir tanto");
+                }else{
+                    int aux = (int) (b.getDineroActual() + (b.getDineroActual()*0.3));
+                    b.setDineroActual(aux);
+                    //System.out.println("Diablo perdiste: " + aux);
+                    naleatorio2 = naleatorio2 - 5;
+                    System.out.println("Ahora esta gente no debería salir tanto");
+                }
                 }  
-                bucle = true;
+                
                 break;          
             case 2: {
                 if (aleatorio <=70) {                          
                    int aux = (int) (b.getDineroActual() - (b.getDineroActual()*0.8));
-                    b.setDineroActual(b.getDineroActual() - aux);
-                    System.out.println("Has Pagado: "+ aux + "Ahora esta gente no debería salir tanto");              
-                    naleatorio2 = naleatorio2 - 5;
+                    b.setDineroActual( aux);
+                    System.out.println("Has Pagado: "+ aux);            
+                   
                 }else if (aleatorio >= 30){
                     System.out.println("Has salido corriendo... y no te han podido seguir, pero están buscandote");  
                     naleatorio2 = naleatorio2 + 5;
                 }   
-                bucle = true;
+                
                 break;
         
         }default:
-                bucle = false;
+               
         }
         
            }
         
+     } // FIN DEL EVENTO DEUDA
+    
+    
+     int intereses(int deuda){
+        int ranAlto = 100;
+        int ranBajo = 1;
+        int aleatorio = NumeroAleatorio.nextInt(100-1);
+        //System.out.println("num_aleatorio_generado:" + aleatorio);
+        //System.out.println("naleatorio2: " + naleatorio2);
+        
+        if (aleatorio < naleatorio3) {
+            imprimirMenu5();
+            int interes = 30;
+            double interesCalc = 0.3;
+            
+        eleccion = sc.nextInt();
+        
+        switch (eleccion) {
+           
+            case 1:{
+                
+                
+                System.out.println("Ignorada padre...");
+                deuda = deuda + 70000;
+                interes = interes + 10;
+                System.out.println("Ahora la interes ha subido a un " + interes + "%");
+                System.out.println("Y tu deuda es ahora " + deuda + " mas cara");
+                return deuda;
+          
+                }  
+                  
+            case 2: {
+               int aux = (int) (b.getDineroActual() - (b.getDineroActual()*interesCalc));
+                    b.setDineroActual(aux);
+                System.out.println("Has pagado las deudas por ahora");
+                naleatorio3 = naleatorio3 - 3;
+                
+                return deuda = deuda + 0;
+                
+                
+        
+        }default:
+               
+        }
+        
+           }
+        
+            return deuda = deuda + 0;
      }
-    }
+     
+    
 }
