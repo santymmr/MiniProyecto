@@ -229,8 +229,10 @@ System.out.println(barraHorizontal);
                 eventos.ev_Quejas();
                 eventos.ev_Incendios();
                 eventos.ev_inversorChino();
-                eventos.deuda();               
-                deuda = eventos.intereses(deuda);
+                eventos.ev_deuda();               
+                deuda = eventos.ev_intereses(deuda);
+                eventos.ev_rule();
+                
             }
       
         
